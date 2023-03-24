@@ -10,12 +10,10 @@
 	  <None Remove="Forum.db" />
 	  <None Remove="Forum.db-shm" />
 	  <None Remove="Forum.db-wal" />
-	  <None Remove="LICENSE" />
 	  <None Remove="README.md" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="LICENSE" />
 	  <Content Include="README.md" />
 	</ItemGroup>
 

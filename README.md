@@ -41,10 +41,10 @@ dotnet run
 
 ## 预览
 
-![论坛首页](Preview/1.png)
-![帖子详细](Preview/2.png)
-![不同板块](Preview/3.png)
-![生成README](Preview/4.png)
-![生成帖子视图](Preview/5.png)
-![生成思维导图](Preview/6.png)
-![思维导图](Preview/7.png)
+![论坛首页](./Preview/1.png)
+![帖子详细](./Preview/2.png)
+![不同板块](./Preview/3.png)
+![生成README](./Preview/4.png)
+![生成帖子视图](./Preview/5.png)
+![生成思维导图](./Preview/6.png)
+![思维导图](./Preview/7.png)
