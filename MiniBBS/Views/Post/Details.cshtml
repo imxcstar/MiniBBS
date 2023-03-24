@@ -1,0 +1,156 @@
+﻿@model PostDetailsViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            border-bottom: 3px solid white;
+        }
+
+        .navbar {
+            border-radius: 5px;
+        }
+
+        table {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        th, td {
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        .table {
+            background-color: white;
+            border-radius: 5px;
+        }
+
+            .table thead tr th {
+                border-top: none;
+            }
+
+            .table tbody tr:hover {
+                background-color: #f8f9fa;
+            }
+
+        footer {
+            border-top: 2px solid white;
+        }
+
+        .comment-form {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+            .comment-form label,
+            .comment-form textarea,
+            .comment-form button {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .comment-form textarea {
+                resize: none;
+            }
+
+            .comment-form button {
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .comment-form button:hover {
+                    background-color: #0056b3;
+                }
+    </style>
+    <title>@ViewData["Title"] - MiniBBS</title>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3 mb-4">
+        <h1>MiniBBS</h1>
+    </header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">首页</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>@Model.Title</h1>
+        <p>作者：@Model.Username</p>
+        <p>发布时间：@Model.PostedTime</p>
+        <hr />
+
+        <div>
+            <h2>内容：</h2>
+            <p>@Model.Content</p>
+        </div>
+
+        <hr />
+
+        <div>
+            <h2>评论：</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>评论内容</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <tr>
+                            <td>@comment.Content</td>
+                            <td>@comment.Username</td>
+                            <td>@comment.PostedTime</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="comment-form">
+                <h2>添加评论：</h2>
+                <form method="post" asp-action="AddComment" asp-controller="Post">
+                    <input type="hidden" asp-for="PostID" />
+                    <label for="Content">评论内容:</label>
+                    <textarea name="Content" rows="4" class="form-control"></textarea>
+                    <button type="submit">创建评论</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p>&copy; 2023 MiniBBS. All rights reserved.</p>
+    </footer>
+</body>
+</html>

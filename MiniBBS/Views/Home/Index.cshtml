@@ -1,0 +1,120 @@
+﻿@model MiniBBS.Models.IndexViewModel
+@{
+    ViewData["Title"] = "MiniBBS";
+}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            border-bottom: 3px solid white;
+        }
+
+        .navbar {
+            border-radius: 5px;
+        }
+
+        table {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        th, td {
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        .table {
+            background-color: white;
+            border-radius: 5px;
+        }
+
+            .table thead tr th {
+                border-top: none;
+            }
+
+            .table tbody tr:hover {
+                background-color: #f8f9fa;
+            }
+
+        footer {
+            border-top: 2px solid white;
+        }
+    </style>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3 mb-4">
+        <h1>MiniBBS</h1>
+    </header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container">
+            <div class="navbar-nav">
+                @foreach (var forum in Model.Forums)
+                {
+                    <a class="nav-item nav-link @(Model.SelectedForum.ForumID == forum.ForumID ? "active" : "")" href="@Url.Action("Index", "Home", new { forumId = forum.ForumID })">@forum.ForumName</a>
+                }
+            </div>
+            <div class="ml-auto navbar-nav">
+                @if (!Model.IsUserLoggedIn)
+                {
+                    <a class="nav-item nav-link" href="@Url.Action("Login", "Account", new { returnUrl = "/" })">登录</a>
+                    <a class="nav-item nav-link" href="@Url.Action("Register", "Account")">注册</a>
+                }
+                else
+                {
+                    <span class="nav-item nav-link">@User.Identity.Name</span>
+                    <a class="nav-item nav-link" href="@Url.Action("Create", "Post", new { forumID = Model.SelectedForum.ForumID })">发帖</a>
+                    <a class="nav-item nav-link" href="@Url.Action("Logout", "Account")">注销</a>
+                }
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>@Model.SelectedForum.ForumName</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Posted Time</th>
+                    <th>Username</th>
+                    <th>Comment Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var post in Model.Posts)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Details", "Post", new { postId = post.PostID })">@post.Title</a></td>
+                        <td>@post.PostedTime</td>
+                        <td>@post.Username</td>
+                        <td>@post.CommentCount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p>&copy; 2023 MiniBBS. All rights reserved.</p>
+    </footer>
+</body>
+</html>

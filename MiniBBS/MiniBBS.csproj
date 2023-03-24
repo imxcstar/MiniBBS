@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Forum.db" />
+	  <None Remove="Forum.db-shm" />
+	  <None Remove="Forum.db-wal" />
+	  <None Remove="LICENSE" />
+	  <None Remove="README.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="LICENSE" />
+	  <Content Include="README.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.15" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Preview\" />
+	</ItemGroup>
+
+</Project>

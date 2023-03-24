@@ -1,0 +1,116 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "登录";
+}
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            border-bottom: 5px solid white;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar {
+            border-radius: 5px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        table {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        th, td {
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        .table {
+            background-color: white;
+            border-radius: 5px;
+        }
+
+            .table thead tr th {
+                border-top: none;
+            }
+
+            .table tbody tr:hover {
+                background-color: #f8f9fa;
+            }
+
+        footer {
+            border-top: 4px solid white;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+    <title>@ViewData["Title"] - MiniBBS</title>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3 mb-4">
+        <h1>MiniBBS</h1>
+    </header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">首页</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>@ViewData["Title"]</h2>
+        <div class="form-container">
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+                <div class="form-group">
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" class="form-control" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-check">
+                    <input asp-for="RememberMe" class="form-check-input" />
+                    <label asp-for="RememberMe" class="form-check-label"></label>
+                </div>
+                <button type="submit" class="btn btn-primary">登录</button>
+            </form>
+        </div>
+    </div>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p>&copy; 2023 MiniBBS. All rights reserved.</p>
+    </footer>
+</body>
+</html>
