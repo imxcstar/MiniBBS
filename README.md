@@ -1,6 +1,6 @@
 # 迷你论坛
 
-这是一个基于ASP.NET Core的迷你论坛，它具有登录、注册、发帖、评论和不同板块功能。本项目旨在为初学者提供一个简单的论坛示例，也可用于更复杂的应用程序。README.md的内容由ChatGPT撰写，开发者稍作修改。
+这是一个基于ASP.NET Core的迷你论坛，它具有登录、注册、发帖、评论和不同板块功能。本项目旨在为初学者提供一个简单的论坛示例，也可用于更复杂的应用程序。此项目的99%的代码和README.md的内容由ChatGPT撰写，开发者稍作修改。
 
 ## 功能
 
@@ -37,7 +37,7 @@ dotnet run
 
 ## 致谢
 
-- 本README.md的内容由[ChatGPT](https://openai.com/product/gpt-4)撰写，开发者稍作修改。
+- 此项目的99%的代码和README.md的内容由[ChatGPT](https://openai.com/product/gpt-4)撰写，开发者稍作修改。
 
 ## 预览
 
