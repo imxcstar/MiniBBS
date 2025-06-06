@@ -25,4 +25,18 @@ public class ForumServiceTests
         Assert.NotNull(fetched);
         Assert.Equal("Test", fetched.ForumName);
     }
+
+    [Fact]
+    public async Task CanUpdateAndDeleteForum()
+    {
+        using var context = GetContext();
+        var service = new ForumService(context);
+        var forum = await service.CreateForumAsync(new Forum { ForumName = "Old", Description = "d" });
+        var updated = await service.UpdateForumAsync(forum.ForumID, new Forum { ForumName = "New", Description = "d2" });
+        Assert.Equal("New", updated?.ForumName);
+
+        var result = await service.DeleteForumAsync(forum.ForumID);
+        Assert.True(result);
+        Assert.Empty(await service.GetAllForumsAsync());
+    }
 }
