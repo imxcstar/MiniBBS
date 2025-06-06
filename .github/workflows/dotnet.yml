@@ -1,0 +1,21 @@
+name: .NET
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    - name: Install dependencies
+      run: dotnet restore MiniBBS.sln
+    - name: Build
+      run: dotnet build MiniBBS.sln --no-restore
+    - name: Test
+      run: dotnet test MiniBBS.sln --no-build
