@@ -17,9 +17,12 @@ namespace MiniBBS.Service
             return await _dbContext.Posts.Include(x => x.User).Include(x => x.Comments).Where(p => p.ForumID == forumId).ToListAsync();
         }
 
-        public async Task<Post> GetPostByIdAsync(int postId)
+        public async Task<Post?> GetPostByIdAsync(int postId)
         {
-            return await _dbContext.Posts.Include(x => x.User).Include(x => x.Comments).FirstAsync(x => x.PostID == postId);
+            return await _dbContext.Posts
+                .Include(x => x.User)
+                .Include(x => x.Comments)
+                .FirstOrDefaultAsync(x => x.PostID == postId);
         }
 
         public async Task<Post> CreatePostAsync(Post post)

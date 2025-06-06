@@ -23,6 +23,11 @@ namespace MiniBBS.Controllers
         public async Task<IActionResult> Details(int postId)
         {
             var post = await _postService.GetPostByIdAsync(postId);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
             var comments = await _commentService.GetCommentsByPostIdAsync(postId);
 
             var postDetailsViewModel = new PostDetailsViewModel

@@ -25,7 +25,7 @@ namespace MiniBBS.Service
     public interface IPostService
     {
         Task<IEnumerable<Post>> GetPostsByForumIdAsync(int forumId);
-        Task<Post> GetPostByIdAsync(int postId);
+        Task<Post?> GetPostByIdAsync(int postId);
         Task<Post> CreatePostAsync(Post post);
         Task UpdatePostAsync(Post post);
         Task DeletePostAsync(int postId);
