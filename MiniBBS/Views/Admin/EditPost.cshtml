@@ -1,0 +1,38 @@
+@model MiniBBS.Models.AdminPostFormViewModel
+@{
+    ViewData["Title"] = "Edit Post";
+}
+<div class="container mt-4">
+    <h1>Edit Post</h1>
+    <form asp-action="EditPost" method="post">
+        <input type="hidden" asp-for="PostId" />
+        <div class="form-group">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Content"></label>
+            <textarea asp-for="Content" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Forum</label>
+            <select name="ForumId" class="form-control" asp-for="ForumId">
+                @foreach (var f in ViewBag.Forums)
+                {
+                    <option value="@f.ForumID" selected="@(f.ForumID == Model.ForumId ? "selected" : null)">@f.ForumName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>User</label>
+            <select name="UserId" class="form-control" asp-for="UserId">
+                @foreach (var u in ViewBag.Users)
+                {
+                    <option value="@u.Id" selected="@(u.Id == Model.UserId ? "selected" : null)">@u.UserName</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-secondary" href="@Url.Action("Posts", "Admin")">Back</a>
+    </form>
+</div>
