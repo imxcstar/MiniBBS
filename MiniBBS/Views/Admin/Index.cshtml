@@ -1,0 +1,23 @@
+@model MiniBBS.Models.AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>@ViewData["Title"] - MiniBBS</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Admin Dashboard</h1>
+        <ul class="list-group mt-3">
+            <li class="list-group-item">Users: @Model.UserCount</li>
+            <li class="list-group-item">Forums: @Model.ForumCount</li>
+            <li class="list-group-item">Posts: @Model.PostCount</li>
+            <li class="list-group-item">Comments: @Model.CommentCount</li>
+        </ul>
+    </div>
+</body>
+</html>

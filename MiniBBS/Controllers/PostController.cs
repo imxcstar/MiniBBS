@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MiniBBS.DB;
 using MiniBBS.Models;
 using MiniBBS.Service;
@@ -45,6 +46,7 @@ namespace MiniBBS.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Create(int forumId)
         {
             var forum = await _forumService.GetForumByIdAsync(forumId);
@@ -57,6 +59,7 @@ namespace MiniBBS.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreatePostViewModel model)
         {
@@ -95,6 +98,7 @@ namespace MiniBBS.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddComment(int postId, string content)
         {

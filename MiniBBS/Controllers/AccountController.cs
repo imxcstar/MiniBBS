@@ -73,6 +73,12 @@ namespace MiniBBS.Controllers
         }
 
         [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
@@ -93,10 +99,8 @@ namespace MiniBBS.Controllers
                 var createUserResult = await _userManager.CreateAsync(user, model.Password);
                 if (createUserResult.Succeeded)
                 {
-                    // 注册成功，登录新用户
+                    await _userManager.AddToRoleAsync(user, "User");
                     await _signInManager.SignInAsync(user, isPersistent: false);
-
-                    // 跳转到首页
                     return RedirectToAction("Index", "Home");
                 }
                 else

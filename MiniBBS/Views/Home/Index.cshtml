@@ -83,6 +83,10 @@
                 {
                     <span class="nav-item nav-link">@User.Identity.Name</span>
                     <a class="nav-item nav-link" href="@Url.Action("Create", "Post", new { forumID = Model.SelectedForum.ForumID })">发帖</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="nav-item nav-link" href="@Url.Action("Index", "Admin")">管理</a>
+                    }
                     <a class="nav-item nav-link" href="@Url.Action("Logout", "Account")">注销</a>
                 }
             </div>
