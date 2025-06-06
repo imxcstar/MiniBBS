@@ -1,0 +1,48 @@
+@model IEnumerable<MiniBBS.Models.AdminUserViewModel>
+@{
+    ViewData["Title"] = "User Management";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>@ViewData["Title"] - MiniBBS</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>User Management</h1>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Registered</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.UserId</td>
+                        <td>@user.Username</td>
+                        <td>@user.Email</td>
+                        <td>@user.Roles</td>
+                        <td>@user.RegistrationDate.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <form asp-action="DeleteUser" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@user.UserId" />
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this user?');">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-secondary" href="@Url.Action("Index", "Admin")">Back</a>
+    </div>
+</body>
+</html>
