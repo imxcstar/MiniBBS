@@ -44,4 +44,32 @@ public class AdminControllerTests
         var model = Assert.IsAssignableFrom<IEnumerable<AdminUserViewModel>>(result?.Model);
         Assert.Single(model);
     }
+
+    [Fact]
+    public async Task Forums_ReturnsViewWithModel()
+    {
+        using var context = GetContext();
+        context.Forums.Add(new Forum { ForumName = "F", Description = "D" });
+        context.SaveChanges();
+        var controller = new AdminController(context, CreateUserManager(context));
+
+        var result = await controller.Forums() as ViewResult;
+        var model = Assert.IsAssignableFrom<IEnumerable<AdminForumViewModel>>(result?.Model);
+        Assert.Single(model);
+    }
+
+    [Fact]
+    public async Task Posts_ReturnsViewWithModel()
+    {
+        using var context = GetContext();
+        context.Users.Add(new User { Id = 1, UserName = "u" });
+        context.Forums.Add(new Forum { ForumID = 1, ForumName = "F", Description = "D" });
+        context.Posts.Add(new Post { Title = "t", Content = "c", ForumID = 1, UserID = 1, PostedTime = DateTime.UtcNow });
+        context.SaveChanges();
+        var controller = new AdminController(context, CreateUserManager(context));
+
+        var result = await controller.Posts() as ViewResult;
+        var model = Assert.IsAssignableFrom<IEnumerable<AdminPostViewModel>>(result?.Model);
+        Assert.Single(model);
+    }
 }
