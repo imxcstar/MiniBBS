@@ -1,0 +1,49 @@
+@model IEnumerable<MiniBBS.Models.AdminForumViewModel>
+@{
+    ViewData["Title"] = "Forum Management";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>@ViewData["Title"] - MiniBBS</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Forum Management</h1>
+        <form asp-action="CreateForum" method="post" class="form-inline mb-3">
+            <input type="text" name="forumName" class="form-control mr-2" placeholder="Name" required />
+            <input type="text" name="description" class="form-control mr-2" placeholder="Description" />
+            <button type="submit" class="btn btn-success">Add</button>
+        </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var forum in Model)
+                {
+                    <tr>
+                        <td>@forum.ForumId</td>
+                        <td>@forum.ForumName</td>
+                        <td>@forum.Description</td>
+                        <td>
+                            <form asp-action="DeleteForum" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@forum.ForumId" />
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this forum?');">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-secondary" href="@Url.Action("Index", "Admin")">Back</a>
+    </div>
+</body>
+</html>
