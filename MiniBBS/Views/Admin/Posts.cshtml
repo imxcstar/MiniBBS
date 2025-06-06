@@ -12,6 +12,7 @@
 <body>
     <div class="container mt-4">
         <h1>Post Management</h1>
+        <a class="btn btn-success mb-2" href="@Url.Action("CreatePost", "Admin")">Add Post</a>
         <table class="table table-striped mt-3">
             <thead>
                 <tr>
@@ -33,6 +34,7 @@
                         <td>@post.Username</td>
                         <td>@post.PostedTime.ToString("yyyy-MM-dd")</td>
                         <td>
+                            <a class="btn btn-sm btn-primary" href="@Url.Action("EditPost", "Admin", new { id = post.PostId })">Edit</a>
                             <form asp-action="DeletePost" method="post" class="d-inline">
                                 <input type="hidden" name="id" value="@post.PostId" />
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this post?');">Delete</button>

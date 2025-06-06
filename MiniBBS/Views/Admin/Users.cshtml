@@ -12,6 +12,7 @@
 <body>
     <div class="container mt-4">
         <h1>User Management</h1>
+        <a class="btn btn-success mb-2" href="@Url.Action("CreateUser", "Admin")">Add User</a>
         <table class="table table-striped mt-3">
             <thead>
                 <tr>
@@ -33,6 +34,7 @@
                         <td>@user.Roles</td>
                         <td>@user.RegistrationDate.ToString("yyyy-MM-dd")</td>
                         <td>
+                            <a class="btn btn-sm btn-primary" href="@Url.Action("EditUser", "Admin", new { id = user.UserId })">Edit</a>
                             <form asp-action="DeleteUser" method="post" class="d-inline">
                                 <input type="hidden" name="id" value="@user.UserId" />
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this user?');">Delete</button>

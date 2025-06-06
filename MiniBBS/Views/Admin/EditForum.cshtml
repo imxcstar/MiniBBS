@@ -1,0 +1,20 @@
+@model MiniBBS.Models.AdminForumViewModel
+@{
+    ViewData["Title"] = "Edit Forum";
+}
+<div class="container mt-4">
+    <h1>Edit Forum</h1>
+    <form asp-action="EditForum" method="post">
+        <input type="hidden" asp-for="ForumId" />
+        <div class="form-group">
+            <label asp-for="ForumName"></label>
+            <input asp-for="ForumName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-secondary" href="@Url.Action("Forums", "Admin")">Back</a>
+    </form>
+</div>

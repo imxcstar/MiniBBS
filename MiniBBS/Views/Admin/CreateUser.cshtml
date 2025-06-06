@@ -1,0 +1,19 @@
+@model MiniBBS.Models.AdminUserViewModel
+@{
+    ViewData["Title"] = "Create User";
+}
+<div class="container mt-4">
+    <h1>Create User</h1>
+    <form asp-action="CreateUser" method="post">
+        <div class="form-group">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-secondary" href="@Url.Action("Users", "Admin")">Back</a>
+    </form>
+</div>

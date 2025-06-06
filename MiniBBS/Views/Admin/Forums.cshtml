@@ -34,6 +34,7 @@
                         <td>@forum.ForumName</td>
                         <td>@forum.Description</td>
                         <td>
+                            <a class="btn btn-sm btn-primary" href="@Url.Action("EditForum", "Admin", new { id = forum.ForumId })">Edit</a>
                             <form asp-action="DeleteForum" method="post" class="d-inline">
                                 <input type="hidden" name="id" value="@forum.ForumId" />
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this forum?');">Delete</button>
