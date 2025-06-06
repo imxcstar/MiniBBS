@@ -1,50 +1,51 @@
-# ÃÔÄãÂÛÌ³
+# è¿·ä½ è®ºå›
 
-ÕâÊÇÒ»¸ö»ùÓÚASP.NET CoreµÄÃÔÄãÂÛÌ³£¬Ëü¾ßÓÐµÇÂ¼¡¢×¢²á¡¢·¢Ìû¡¢ÆÀÂÛºÍ²»Í¬°å¿é¹¦ÄÜ¡£±¾ÏîÄ¿Ö¼ÔÚÎª³õÑ§ÕßÌá¹©Ò»¸ö¼òµ¥µÄÂÛÌ³Ê¾Àý£¬Ò²¿ÉÓÃÓÚ¸ü¸´ÔÓµÄÓ¦ÓÃ³ÌÐò¡£´ËÏîÄ¿µÄ99%µÄ´úÂëºÍREADME.mdµÄÄÚÈÝÓÉChatGPT×«Ð´£¬¿ª·¢ÕßÉÔ×÷ÐÞ¸Ä¡£
+è¿™æ˜¯ä¸€ä¸ªåŸºäºŽASP.NET Coreçš„è¿·ä½ è®ºå›ï¼Œå®ƒå…·æœ‰ç™»å½•ã€æ³¨å†Œã€å‘å¸–ã€è¯„è®ºå’Œä¸åŒæ¿å—åŠŸèƒ½ã€‚æœ¬é¡¹ç›®æ—¨åœ¨ä¸ºåˆå­¦è€…æä¾›ä¸€ä¸ªç®€å•çš„è®ºå›ç¤ºä¾‹ï¼Œä¹Ÿå¯ç”¨äºŽæ›´å¤æ‚çš„åº”ç”¨ç¨‹åºã€‚æ­¤é¡¹ç›®çš„99%çš„ä»£ç å’ŒREADME.mdçš„å†…å®¹ç”±ChatGPTæ’°å†™ï¼Œå¼€å‘è€…ç¨ä½œä¿®æ”¹ã€‚
 
-## ¹¦ÄÜ
+## åŠŸèƒ½
 
-- ÓÃ»§µÇÂ¼ºÍ×¢²á
-- ·¢±íÌû×Ó
-- ÆÀÂÛ¹¦ÄÜ
-- ¶à°å¿éÖ§³Ö
+- ç”¨æˆ·ç™»å½•å’Œæ³¨å†Œ
+- å‘è¡¨å¸–å­
+- è¯„è®ºåŠŸèƒ½
+- å¤šæ¿å—æ”¯æŒ
 
-## °²×°
+## å®‰è£…
 
-1. ¿ËÂ¡´Ë²Ö¿âµ½±¾µØ£º
+1. å…‹éš†æ­¤ä»“åº“åˆ°æœ¬åœ°ï¼š
 
 git clone https://github.com/imxcstar/MiniBBS
 
-2. Ê¹ÓÃVisual Studio»òÆäËû.NET Core IDE´ò¿ªÏîÄ¿¡£
+2. ä½¿ç”¨Visual Studioæˆ–å…¶ä»–.NET Core IDEæ‰“å¼€é¡¹ç›®ã€‚
 
-3. ÔËÐÐÒÔÏÂÃüÁîÀ´°²×°ÒÀÀµÏî£º
+3. è¿è¡Œä»¥ä¸‹å‘½ä»¤æ¥å®‰è£…ä¾èµ–é¡¹ï¼š
 
 dotnet restore
 
-4. ÔËÐÐÒÔÏÂÃüÁîÀ´Æô¶¯ÏîÄ¿£º
+4. è¿è¡Œä»¥ä¸‹å‘½ä»¤æ¥å¯åŠ¨é¡¹ç›®ï¼š
 
 dotnet run
 
-5. ÔÚä¯ÀÀÆ÷ÖÐ·ÃÎÊ£º`https://localhost:7068`£¬¼´¿ÉÊ¹ÓÃÃÔÄãÂÛÌ³¡£
+5. åœ¨æµè§ˆå™¨ä¸­è®¿é—®ï¼š`https://localhost:7068`ï¼Œå³å¯ä½¿ç”¨è¿·ä½ è®ºå›ã€‚
 
-## ¹±Ï×
+## è´¡çŒ®
 
-»¶Ó­¶ÔÏîÄ¿½øÐÐ¹±Ï×£¬¿ÉÍ¨¹ýÌá½»PR»òÌá³ö½¨ÒéÀ´²ÎÓë¡£
+æ¬¢è¿Žå¯¹é¡¹ç›®è¿›è¡Œè´¡çŒ®ï¼Œå¯é€šè¿‡æäº¤PRæˆ–æå‡ºå»ºè®®æ¥å‚ä¸Žã€‚
 
-## ¿ªÔ´Ðí¿ÉÖ¤
+## å¼€æºè®¸å¯è¯
 
-±¾ÏîÄ¿²ÉÓÃMITÐí¿ÉÖ¤¡£ÓÐ¹ØÏêÏ¸ÐÅÏ¢£¬Çë²éÔÄ[LICENSE](LICENSE)ÎÄ¼þ¡£
+æœ¬é¡¹ç›®é‡‡ç”¨MITè®¸å¯è¯ã€‚æœ‰å…³è¯¦ç»†ä¿¡æ¯ï¼Œè¯·æŸ¥é˜…[LICENSE](LICENSE)æ–‡ä»¶ã€‚
 
-## ÖÂÐ»
+## è‡´è°¢
 
-- ´ËÏîÄ¿µÄ99%µÄ´úÂëºÍREADME.mdµÄÄÚÈÝÓÉ[ChatGPT](https://openai.com/product/gpt-4)×«Ð´£¬¿ª·¢ÕßÉÔ×÷ÐÞ¸Ä¡£
+- æ­¤é¡¹ç›®çš„99%çš„ä»£ç å’ŒREADME.mdçš„å†…å®¹ç”±[ChatGPT](https://openai.com/product/gpt-4)æ’°å†™ï¼Œå¼€å‘è€…ç¨ä½œä¿®æ”¹ã€‚
 
-## Ô¤ÀÀ
+## é¢„è§ˆ
 
-![ÂÛÌ³Ê×Ò³](./Preview/1.png)
-![Ìû×ÓÏêÏ¸](./Preview/2.png)
-![²»Í¬°å¿é](./Preview/3.png)
-![Éú³ÉREADME](./Preview/4.png)
-![Éú³ÉÌû×ÓÊÓÍ¼](./Preview/5.png)
-![Éú³ÉË¼Î¬µ¼Í¼](./Preview/6.png)
-![Ë¼Î¬µ¼Í¼](./Preview/7.png)
+![è®ºå›é¦–é¡µ](./Preview/1.png)
+![å¸–å­è¯¦ç»†](./Preview/2.png)
+![ä¸åŒæ¿å—](./Preview/3.png)
+![ç”ŸæˆREADME](./Preview/4.png)
+![ç”Ÿæˆå¸–å­è§†å›¾](./Preview/5.png)
+![ç”Ÿæˆæ€ç»´å¯¼å›¾](./Preview/6.png)
+![æ€ç»´å¯¼å›¾](./Preview/7.png)
+
