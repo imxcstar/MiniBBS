@@ -5,17 +5,23 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniBBS", "MiniBBS\MiniBBS.csproj", "{FDF6ABC1-FDF9-4E01-94DD-E0195934B26C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniBBS.Tests", "MiniBBS.Tests\MiniBBS.Tests.csproj", "{13D70F55-7378-4195-A621-51F8153FF645}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FDF6ABC1-FDF9-4E01-94DD-E0195934B26C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDF6ABC1-FDF9-4E01-94DD-E0195934B26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDF6ABC1-FDF9-4E01-94DD-E0195934B26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDF6ABC1-FDF9-4E01-94DD-E0195934B26C}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
+        GlobalSection(ProjectConfigurationPlatforms) = postSolution
+                {FDF6ABC1-FDF9-4E01-94DD-E0195934B26C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {FDF6ABC1-FDF9-4E01-94DD-E0195934B26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {FDF6ABC1-FDF9-4E01-94DD-E0195934B26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {FDF6ABC1-FDF9-4E01-94DD-E0195934B26C}.Release|Any CPU.Build.0 = Release|Any CPU
+                {13D70F55-7378-4195-A621-51F8153FF645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {13D70F55-7378-4195-A621-51F8153FF645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {13D70F55-7378-4195-A621-51F8153FF645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {13D70F55-7378-4195-A621-51F8153FF645}.Release|Any CPU.Build.0 = Release|Any CPU
+        EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
