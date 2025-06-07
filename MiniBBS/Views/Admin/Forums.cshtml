@@ -1,4 +1,5 @@
 @model IEnumerable<MiniBBS.Models.AdminForumViewModel>
+@using MiniBBS.Models
 @{
     ViewData["Title"] = "Forum Management";
 }
@@ -10,11 +11,6 @@
     <title>@ViewData["Title"] - MiniBBS</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
-        <div class="container">
-            <a class="navbar-brand" href="/">首页</a>
-        </div>
-    </nav>
     <div class="container mt-4">
         <h1>Forum Management</h1>
         <form asp-action="CreateForum" method="post" class="form-inline mb-3">

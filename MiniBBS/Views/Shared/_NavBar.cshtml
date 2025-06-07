@@ -1,0 +1,35 @@
+@model MiniBBS.Models.NavBarViewModel
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="container">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/">首页</a>
+            @if (Model?.Forums != null)
+            {
+                foreach (var forum in Model.Forums)
+                {
+                    <a class="nav-item nav-link @(Model.SelectedForum != null && Model.SelectedForum.ForumID == forum.ForumID ? "active" : "")" href="@Url.Action("Index", "Home", new { forumId = forum.ForumID })">@forum.ForumName</a>
+                }
+            }
+        </div>
+        <div class="ml-auto navbar-nav">
+            @if (!User.Identity?.IsAuthenticated ?? true)
+            {
+                <a class="nav-item nav-link" href="@Url.Action("Login", "Account", new { returnUrl = "/" })">登录</a>
+                <a class="nav-item nav-link" href="@Url.Action("Register", "Account")">注册</a>
+            }
+            else
+            {
+                <span class="nav-item nav-link">@User.Identity?.Name</span>
+                @if (Model?.SelectedForum != null)
+                {
+                    <a class="nav-item nav-link" href="@Url.Action("Create", "Post", new { forumID = Model.SelectedForum.ForumID })">发帖</a>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Admin")">管理</a>
+                }
+                <a class="nav-item nav-link" href="@Url.Action("Logout", "Account")">注销</a>
+            }
+        </div>
+    </div>
+</nav>

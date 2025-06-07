@@ -17,6 +17,11 @@ namespace MiniBBS.Controllers
         private readonly ForumDbContext _context;
         private readonly UserManager<User> _userManager;
 
+        private void SetNavBar()
+        {
+            ViewBag.NavBarModel = new NavBarViewModel();
+        }
+
         public AdminController(ForumDbContext context, UserManager<User> userManager)
         {
             _context = context;
@@ -25,6 +30,7 @@ namespace MiniBBS.Controllers
 
         public IActionResult Index()
         {
+            SetNavBar();
             var model = new AdminDashboardViewModel
             {
                 UserCount = _context.Users.Count(),
@@ -37,6 +43,7 @@ namespace MiniBBS.Controllers
 
         public async Task<IActionResult> Users()
         {
+            SetNavBar();
             var list = new List<AdminUserViewModel>();
             foreach (var user in _context.Users.ToList())
             {
@@ -66,7 +73,11 @@ namespace MiniBBS.Controllers
             return RedirectToAction(nameof(Users));
         }
 
-        public IActionResult CreateUser() => View();
+        public IActionResult CreateUser()
+        {
+            SetNavBar();
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -88,6 +99,7 @@ namespace MiniBBS.Controllers
 
         public async Task<IActionResult> EditUser(int id)
         {
+            SetNavBar();
             var user = await _userManager.FindByIdAsync(id.ToString());
             if (user == null) return NotFound();
             var roles = await _userManager.GetRolesAsync(user);
@@ -118,6 +130,7 @@ namespace MiniBBS.Controllers
 
         public async Task<IActionResult> Forums()
         {
+            SetNavBar();
             var forums = await _context.Forums.ToListAsync();
             var model = forums.Select(f => new AdminForumViewModel
             {
@@ -142,6 +155,7 @@ namespace MiniBBS.Controllers
 
         public async Task<IActionResult> EditForum(int id)
         {
+            SetNavBar();
             var forum = await _context.Forums.FindAsync(id);
             if (forum == null) return NotFound();
             var model = new AdminForumViewModel
@@ -180,6 +194,7 @@ namespace MiniBBS.Controllers
 
         public async Task<IActionResult> Posts()
         {
+            SetNavBar();
             var posts = await _context.Posts.Include(p => p.User).Include(p => p.Forum).ToListAsync();
             var model = posts.Select(p => new AdminPostViewModel
             {
@@ -194,6 +209,7 @@ namespace MiniBBS.Controllers
 
         public async Task<IActionResult> CreatePost()
         {
+            SetNavBar();
             ViewBag.Forums = await _context.Forums.ToListAsync();
             ViewBag.Users = await _context.Users.ToListAsync();
             return View();
@@ -203,6 +219,7 @@ namespace MiniBBS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePost(AdminPostFormViewModel model)
         {
+            SetNavBar();
             if (ModelState.IsValid)
             {
                 var post = new Post
@@ -224,6 +241,7 @@ namespace MiniBBS.Controllers
 
         public async Task<IActionResult> EditPost(int id)
         {
+            SetNavBar();
             var post = await _context.Posts.FindAsync(id);
             if (post == null) return NotFound();
             ViewBag.Forums = await _context.Forums.ToListAsync();
@@ -243,6 +261,7 @@ namespace MiniBBS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditPost(AdminPostFormViewModel model)
         {
+            SetNavBar();
             var post = await _context.Posts.FindAsync(model.PostId);
             if (post == null) return NotFound();
 
