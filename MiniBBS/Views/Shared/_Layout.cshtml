@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MiniBBS.styles.css" asp-append-version="true" />
 </head>
+@using MiniBBS.Models
 <body>
+    @await Html.PartialAsync("_NavBar", ViewBag.NavBarModel as NavBarViewModel)
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

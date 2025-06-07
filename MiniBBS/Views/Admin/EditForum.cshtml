@@ -1,12 +1,8 @@
 @model MiniBBS.Models.AdminForumViewModel
+@using MiniBBS.Models
 @{
     ViewData["Title"] = "Edit Forum";
 }
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
-    <div class="container">
-        <a class="navbar-brand" href="/">首页</a>
-    </div>
-</nav>
 <div class="container mt-4">
     <h1>Edit Forum</h1>
     <form asp-action="EditForum" method="post">

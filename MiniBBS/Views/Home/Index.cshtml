@@ -1,4 +1,5 @@
-﻿@model MiniBBS.Models.IndexViewModel
+@model MiniBBS.Models.IndexViewModel
+@using MiniBBS.Models
 @{
     ViewData["Title"] = "MiniBBS";
 }
@@ -65,33 +66,7 @@
     <header class="bg-primary text-white text-center py-3 mb-4">
         <h1>MiniBBS</h1>
     </header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-        <div class="container">
-            <div class="navbar-nav">
-                @foreach (var forum in Model.Forums)
-                {
-                    <a class="nav-item nav-link @(Model.SelectedForum.ForumID == forum.ForumID ? "active" : "")" href="@Url.Action("Index", "Home", new { forumId = forum.ForumID })">@forum.ForumName</a>
-                }
-            </div>
-            <div class="ml-auto navbar-nav">
-                @if (!Model.IsUserLoggedIn)
-                {
-                    <a class="nav-item nav-link" href="@Url.Action("Login", "Account", new { returnUrl = "/" })">登录</a>
-                    <a class="nav-item nav-link" href="@Url.Action("Register", "Account")">注册</a>
-                }
-                else
-                {
-                    <span class="nav-item nav-link">@User.Identity.Name</span>
-                    <a class="nav-item nav-link" href="@Url.Action("Create", "Post", new { forumID = Model.SelectedForum.ForumID })">发帖</a>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a class="nav-item nav-link" href="@Url.Action("Index", "Admin")">管理</a>
-                    }
-                    <a class="nav-item nav-link" href="@Url.Action("Logout", "Account")">注销</a>
-                }
-            </div>
-        </div>
-    </nav>
+
 
     <div class="container">
         <h2>@Model.SelectedForum.ForumName</h2>
