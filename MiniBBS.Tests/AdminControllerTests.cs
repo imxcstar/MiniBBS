@@ -144,4 +144,35 @@ public class AdminControllerTests
         await controller.EditPost(new AdminPostFormViewModel { PostId = post.PostID, Title = "n", Content = "n", ForumId = 1, UserId = 1 });
         Assert.Equal("n", context.Posts.First().Title);
     }
+
+    [Fact]
+    public async Task PostComments_ReturnsViewWithModel()
+    {
+        using var context = GetContext();
+        context.Users.Add(new User { Id = 1, UserName = "u" });
+        context.Forums.Add(new Forum { ForumID = 1, ForumName = "F", Description = "d" });
+        context.Posts.Add(new Post { PostID = 1, Title = "t", Content = "c", ForumID = 1, UserID = 1, PostedTime = DateTime.UtcNow });
+        context.Comments.Add(new Comment { CommentID = 1, Content = "cc", PostID = 1, UserID = 1, PostedTime = DateTime.UtcNow });
+        context.SaveChanges();
+        var controller = new AdminController(context, CreateUserManager(context));
+
+        var result = await controller.PostComments(1) as ViewResult;
+        var model = Assert.IsAssignableFrom<IEnumerable<AdminCommentViewModel>>(result?.Model);
+        Assert.Single(model);
+    }
+
+    [Fact]
+    public async Task DeleteComment_RemovesComment()
+    {
+        using var context = GetContext();
+        context.Users.Add(new User { Id = 1, UserName = "u" });
+        context.Forums.Add(new Forum { ForumID = 1, ForumName = "F", Description = "d" });
+        context.Posts.Add(new Post { PostID = 1, Title = "t", Content = "c", ForumID = 1, UserID = 1, PostedTime = DateTime.UtcNow });
+        context.Comments.Add(new Comment { CommentID = 1, Content = "cc", PostID = 1, UserID = 1, PostedTime = DateTime.UtcNow });
+        context.SaveChanges();
+        var controller = new AdminController(context, CreateUserManager(context));
+
+        await controller.DeleteComment(1, 1);
+        Assert.Empty(context.Comments);
+    }
 }

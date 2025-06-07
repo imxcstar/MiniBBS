@@ -286,5 +286,37 @@ namespace MiniBBS.Controllers
             }
             return RedirectToAction(nameof(Posts));
         }
+
+        public async Task<IActionResult> PostComments(int postId)
+        {
+            SetNavBar();
+            ViewBag.PostId = postId;
+            var comments = await _context.Comments
+                .Where(c => c.PostID == postId)
+                .Include(c => c.User)
+                .ToListAsync();
+
+            var model = comments.Select(c => new AdminCommentViewModel
+            {
+                CommentId = c.CommentID,
+                Content = c.Content,
+                Username = c.User?.UserName ?? string.Empty,
+                PostedTime = c.PostedTime
+            });
+            return View("Comments", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteComment(int id, int postId)
+        {
+            var comment = await _context.Comments.FindAsync(id);
+            if (comment != null)
+            {
+                _context.Comments.Remove(comment);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(PostComments), new { postId });
+        }
     }
 }
