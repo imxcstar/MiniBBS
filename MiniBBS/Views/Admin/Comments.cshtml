@@ -1,0 +1,47 @@
+@model IEnumerable<MiniBBS.Models.AdminCommentViewModel>
+@{
+    ViewData["Title"] = "Comment Management";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>@ViewData["Title"] - MiniBBS</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Comment Management</h1>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Content</th>
+                    <th>User</th>
+                    <th>Posted</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>@c.CommentId</td>
+                        <td>@c.Content</td>
+                        <td>@c.Username</td>
+                        <td>@c.PostedTime.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <form asp-action="DeleteComment" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@c.CommentId" />
+                                <input type="hidden" name="postId" value="@ViewBag.PostId" />
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this comment?');">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-secondary" href="@Url.Action("Posts", "Admin")">Back</a>
+    </div>
+</body>
+</html>

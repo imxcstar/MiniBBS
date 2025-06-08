@@ -47,6 +47,11 @@ namespace MiniBBS.Controllers
                 IsUserLoggedIn = _signInManager.IsSignedIn(User)
             };
 
+            ViewBag.NavBarModel = new NavBarViewModel
+            {
+                Forums = forums,
+                SelectedForum = selectedForum
+            };
 
             return View(model);
         }

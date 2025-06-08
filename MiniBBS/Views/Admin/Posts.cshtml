@@ -1,4 +1,5 @@
 @model IEnumerable<MiniBBS.Models.AdminPostViewModel>
+@using MiniBBS.Models
 @{
     ViewData["Title"] = "Post Management";
 }
@@ -22,6 +23,7 @@
                     <th>User</th>
                     <th>Posted</th>
                     <th></th>
+                    <th>Comments</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,6 +41,9 @@
                                 <input type="hidden" name="id" value="@post.PostId" />
                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Delete this post?');">Delete</button>
                             </form>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-info" href="@Url.Action("PostComments", "Admin", new { postId = post.PostId })">Comments</a>
                         </td>
                     </tr>
                 }
